@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SeatList from "./SeatList";
 import SelectSeat from "./SelectSeat";
+import { connect } from "react-redux";
 import style from "./Home.module.css";
 
 export class Home extends Component {
@@ -26,4 +27,4 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export default connect()(Home);

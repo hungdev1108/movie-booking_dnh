@@ -20,12 +20,18 @@ export class SelectSeat extends Component {
           </div>
         </div>
         <div className="selectSeat-body mt-4">
-          <table className="table table-bordered text-white w-500">
+          <table className="table table-bordered text-white">
             <thead>
               <tr>
-                <th scope="col">Số ghế</th>
-                <th scope="col">Giá</th>
-                <th scope="col">Hủy</th>
+                <th scope="col" className="fs-5">
+                  Số ghế
+                </th>
+                <th scope="col" className="fs-5">
+                  Giá
+                </th>
+                <th scope="col" className="fs-5">
+                  Hủy
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -40,7 +46,7 @@ export class SelectSeat extends Component {
                 <td style={{ color: "red" }}>X</td>
               </tr>
               <tr>
-                <td>Tổng tiền</td>
+                <td className="fs-5">Tổng tiền</td>
                 <td className="text-warning">300.000</td>
                 <td></td>
               </tr>
