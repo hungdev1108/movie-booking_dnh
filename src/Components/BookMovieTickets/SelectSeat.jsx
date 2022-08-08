@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import style from "./Home.module.css";
 import { connect } from "react-redux";
-import { addSeat, isCheck } from "../../Redux/action";
+import { addSeat, isCheck, pay, upload } from "../../Redux/action";
 
 export class SelectSeat extends Component {
   handleDelete = (seat) => {
@@ -9,8 +9,8 @@ export class SelectSeat extends Component {
     this.props.dispatch(isCheck(seat));
   };
 
-  handleSubmit = () => {
-    console.log(this.props.selectSeat);
+  handleSubmit = (seat) => {
+    this.props.dispatch(pay(seat));
   };
 
   sumTotal = () => {

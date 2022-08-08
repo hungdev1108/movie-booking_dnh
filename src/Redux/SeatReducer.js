@@ -5,8 +5,6 @@ const initialState = {
 const SeatReducer = (state = initialState, action) => {
   switch (action.type) {
     case "UPLOAD_DATA": {
-      //   const cloneData = [...action.payload];
-
       return { ...state, seatList: action.payload };
     }
     case "IS_CHECK": {
@@ -21,6 +19,7 @@ const SeatReducer = (state = initialState, action) => {
 
       return { ...state, seatList: cloneData };
     }
+
     default:
       return state;
   }

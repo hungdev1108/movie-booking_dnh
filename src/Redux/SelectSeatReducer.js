@@ -3,7 +3,7 @@ const stateSelectSeat = {
 };
 const SelectSeatReducer = (state = stateSelectSeat, action) => {
   switch (action.type) {
-    case "ADD_SEAT":
+    case "ADD_SEAT": {
       let cloneSelectSeat = [...state.selectSeat];
 
       let index = cloneSelectSeat.findIndex((item) => {
@@ -17,6 +17,15 @@ const SelectSeatReducer = (state = stateSelectSeat, action) => {
       }
 
       return { ...state, selectSeat: cloneSelectSeat };
+    }
+
+    case "PAY": {
+      let cloneSelectSeat = [...state.selectSeat];
+
+      cloneSelectSeat = [];
+
+      return { ...state, selectSeat: cloneSelectSeat };
+    }
 
     default:
       return { ...state };

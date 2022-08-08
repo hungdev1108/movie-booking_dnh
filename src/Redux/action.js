@@ -11,3 +11,17 @@ export const isCheck = (value) => {
     payload: value,
   };
 };
+
+export const pay = (value) => {
+  return {
+    type: "PAY",
+    payload: value,
+  };
+};
+
+export const upload = (value) => {
+  return {
+    type: "UPLOAD_DATA",
+    payload: value,
+  };
+};
