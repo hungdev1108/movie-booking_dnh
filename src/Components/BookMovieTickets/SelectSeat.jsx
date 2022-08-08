@@ -1,7 +1,23 @@
 import React, { Component } from "react";
 import style from "./Home.module.css";
+import { connect } from "react-redux";
+import { addSeat } from "../../Redux/action";
 
 export class SelectSeat extends Component {
+  handleDelete = (seat) => {
+    this.props.dispatch(addSeat(seat));
+  };
+
+  handleSubmit = () => {
+    this.props.selectSeat.map((item) => {
+      return (item.daDat = true);
+    });
+  };
+
+  sumTotal = () => {
+    console.log(this.props.selectSeat);
+  };
+
   render() {
     return (
       <div className="selectSeat mt-5">
@@ -35,20 +51,36 @@ export class SelectSeat extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr className="text-warning">
-                <td>A1</td>
-                <td>150.000</td>
-                <td style={{ color: "red" }}>X</td>
-              </tr>
-              <tr className="text-warning">
-                <td>A2</td>
-                <td>150.000</td>
-                <td style={{ color: "red" }}>X</td>
-              </tr>
+              {this.props.selectSeat?.map((item) => {
+                return (
+                  <tr key={item.soGhe} className="text-warning">
+                    <td className="text-center">{item.soGhe}</td>
+                    <td>{item.gia}đ</td>
+                    <td>
+                      <button
+                        onClick={() => this.handleDelete(item)}
+                        style={{ color: "red" }}
+                        className="btn border-0 fs-5"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
               <tr>
                 <td className="fs-5">Tổng tiền</td>
-                <td className="text-warning">300.000</td>
-                <td></td>
+                <td className="text-warning">
+                  {this.props.selectSeat.reduce((total, seatItem, index) => {
+                    return (total += seatItem.gia);
+                  }, 0)}
+                  đ
+                </td>
+                <td>
+                  <button className="fs-5 border-0" onClick={() => this.handleSubmit()}>
+                    Thanh Toán
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -58,4 +90,10 @@ export class SelectSeat extends Component {
   }
 }
 
-export default SelectSeat;
+const mapStateToProps = (state) => {
+  return {
+    selectSeat: state.selectSeatReducer.selectSeat,
+  };
+};
+
+export default connect(mapStateToProps)(SelectSeat);

@@ -3,15 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import SeatReducer from "./Redux/SeatReducer";
-
-const rootReducer = combineReducers({
-  // khai báo reducer
-  // key: value
-  seat: SeatReducer,
-});
+import { createStore } from "redux";
+import { rootReducer } from "./Redux/rootReducer";
 
 const store = createStore(
   rootReducer,
