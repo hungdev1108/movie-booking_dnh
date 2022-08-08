@@ -4,3 +4,10 @@ export const addSeat = (value) => {
     payload: value,
   };
 };
+
+export const isCheck = (value) => {
+  return {
+    type: "IS_CHECK",
+    payload: value,
+  };
+};

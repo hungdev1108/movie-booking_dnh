@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import style from "./Home.module.css";
 import { connect } from "react-redux";
-import { addSeat } from "../../Redux/action";
+import { addSeat, isCheck } from "../../Redux/action";
 
 export class SelectSeat extends Component {
   handleDelete = (seat) => {
     this.props.dispatch(addSeat(seat));
+    this.props.dispatch(isCheck(seat));
   };
 
   handleSubmit = () => {
-    this.props.selectSeat.map((item) => {
-      return (item.daDat = true);
-    });
+    console.log(this.props.selectSeat);
   };
 
   sumTotal = () => {

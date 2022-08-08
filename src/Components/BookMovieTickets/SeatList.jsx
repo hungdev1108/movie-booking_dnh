@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import style from "../BookMovieTickets/Home.module.css";
-import { addSeat } from "../../Redux/action";
+import { addSeat, isCheck } from "../../Redux/action";
 
 export class SeatList extends Component {
   toggleCheck = (seat) => {
+    this.props.dispatch(isCheck(seat));
     this.props.dispatch(addSeat(seat));
   };
 
@@ -39,14 +40,16 @@ export class SeatList extends Component {
                         return (
                           <td key={seat.soGhe} className="border-0 px-0 text-center">
                             <label
-                              for={seat.soGhe}
+                              htmlFor={seat.soGhe}
                               className={style.ghe}
-                              value={seat.soGhe}
+                              style={{
+                                backgroundColor: seat.daDat ? "#6dee6d" : "#ffffff",
+                              }}
                             >
                               {seat.soGhe}
                             </label>
                             <input
-                              //   style={{ opacity: "0" }}
+                              style={{ opacity: "0" }}
                               onClick={() => this.toggleCheck(seat)}
                               id={seat.soGhe}
                               type={"checkbox"}
@@ -69,7 +72,7 @@ export class SeatList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.seatReducer.seatList);
+  // console.log(state.seatReducer.seatList);
   return {
     seatList: state.seatReducer.seatList,
   };
